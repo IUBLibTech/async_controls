@@ -24,5 +24,9 @@ class TestAppGenerator < Rails::Generators::Base
   def load_workflow
     rails_command 'hyrax:workflow:load'
   end
+
+  def generate_work
+    generate 'hyrax:work AsyncWork'
+  end
 end
 
