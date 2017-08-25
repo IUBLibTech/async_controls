@@ -28,9 +28,21 @@ module AsyncControls
 
     def inject_ability
       file_path = 'app/models/ability.rb'
-      inject_into_file file_path, after: /def custom_permissions$/ do
+      inject_into_file file_path, after: "def custom_permissions" do
         "\n    can [:file_status, :stage, :unstage, :fixity], FileSet\n"
       end
+    end
+
+    def inject_engine_mount
+      file_path = 'config/routes.rb'
+      inject_into_file file_path, after: "mount Hyrax::Engine, at: '/'" do
+        "\n  mount AsyncControls::Engine, at: '/'\n"
+      end
+    end
+
+    def copy_config
+      file_path = 'config/async_controls.yml.sample'
+      copy_file 'async_controls.yml.sample', file_path
     end
   end
 end
