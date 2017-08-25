@@ -19,10 +19,17 @@ module AsyncControls
       file_path = 'app/views/hyrax/file_sets/_show_actions.html.erb'
       if File.exist?(file_path)
         inject_into_file file_path, after: /<div class="form-actions">$/ do
-          "\n  <%= render partial: 'async_controls/actions', locals: { async_controls_presenter: @async_controls_presenter } %>"
+          "\n  <%= render partial: 'async_controls/actions', locals: { async_controls_presenter: @async_controls_presenter } %>\n"
         end
       else
         copy_file '_show_actions.html.erb', file_path
+      end
+    end
+
+    def inject_ability
+      file_path = 'app/models/ability.rb'
+      inject_into_file file_path, after: /def custom_permissions$/ do
+        "\n    can [:file_status, :stage, :unstage, :fixity], FileSet\n"
       end
     end
   end
