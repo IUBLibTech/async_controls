@@ -1,0 +1,20 @@
+en:
+  async_controls:
+    actions:
+      stage:
+        title: "Stage to Cache"
+      unstage:
+        title: "Unstage from Cache"
+      download:
+        title: "Download"
+      fixity:
+        title: "Fixity Check"
+      disabled:
+        title: "Disabled"
+    status_phrase:
+      not_cached: "Not Cached"
+      staging: "Staging to Cache"
+      staged: "Staged to Cache"
+      unstaging: "Unstaging from Cache"
+      calculating_checksum: "Calculating Checksum"
+      disabled: "Storage proxy disabled or not running"
