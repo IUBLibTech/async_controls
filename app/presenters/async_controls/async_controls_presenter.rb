@@ -95,7 +95,7 @@ module AsyncControls
     private 
 
     def url_helpers
-      @url_helpers ||= Rails.application.routes.url_helpers
+      @url_helpers ||= AsyncControls::Engine.routes.url_helpers
     end
   end
 end
